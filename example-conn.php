@@ -10,4 +10,6 @@ $webhook = '<discord_webhook_url>';
 
 $mention = '<@discord_user_id>';
 
+date_default_timezone_set('<timezone>');
+
 ?>
