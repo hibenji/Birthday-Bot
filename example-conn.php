@@ -8,4 +8,6 @@ if ($conn->connect_error) {
 
 $webhook = '<discord_webhook_url>';
 
+$mention = '<@discord_user_id>';
+
 ?>

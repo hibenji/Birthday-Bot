@@ -1,10 +1,3 @@
-<?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('max_execution_time', 300); //300 seconds = 5 minutes. In case if your CURL is slow and is loading too much (Can be IPv6 problem)
-error_reporting(E_ALL);
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,32 +13,11 @@ error_reporting(E_ALL);
         <h1 class="title">
             Birthdays
         </h1>
-        <!-- make table -->
-        <!-- <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody> -->
         <?php
         include 'conn.php';
 
         $sql = "SELECT * FROM dates";
         $result = $conn->query($sql);
-        
-        // print out all rows
-        // if ($result->num_rows > 0) {
-        //     // output data of each row
-        //     while($row = $result->fetch_assoc()) {
-        //         echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Date: " . $row["date"]. "<br>";
-        //     }
-        // } else {
-        //     echo "0 results";
-        // }
-        
 
 
         if ($result->num_rows > 0) {
@@ -58,13 +30,6 @@ error_reporting(E_ALL);
                 // get todays date
                 $today = date("m-d");
                 $date = substr($date, 5);
-
-                
-                // echo "<tr>";
-                // echo "<td>" . $id . "</td>";
-                // echo "<td>" . $name . "</td>";
-                // echo "<td>" . $date . "</td>";
-                // echo "</tr>";
                 
 
                 if ($today == $date) {
@@ -74,7 +39,7 @@ error_reporting(E_ALL);
                     $data = array(
                         'username' => 'Birthday Bot',
                         'avatar_url' => 'https://i.pinimg.com/originals/5b/49/c8/5b49c86ba30c3df81751388908e09239.png',
-                        'content' => '<@499865877945253888> It\'s ' . $name . ' Birthday today!'
+                        'content' => $mention . ' It\'s ' . $name . ' Birthday today!'
                     );
                     $options = array(
                         'http' => array(
@@ -93,10 +58,6 @@ error_reporting(E_ALL);
         }
 
         ?>
-<!-- 
-            </tbody>
-        </table> -->
-        <!-- end table -->
     </div>
     </section>
     </body>
